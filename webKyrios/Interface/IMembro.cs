@@ -12,6 +12,8 @@ namespace webKyrios.Interface
         void InserirMembro(Membro membro);
 
          Task<List<Membro>> localizaMembro(string nome);
+
+         void deletaMembro(int id);
     }
 
 

@@ -107,6 +107,26 @@ namespace webKyrios.Infra
 
         }
 
+        public void deletaMembro(int id)
+        {
+            HttpResponseMessage response = client.DeleteAsync("/api/membros/Deletemembros/" + id).Result;
+            response.EnsureSuccessStatusCode();
+
+            if (response.IsSuccessStatusCode)
+            {
+                Page currentPage = HttpContext.Current.Handler as System.Web.UI.Page;
+                ScriptManager.RegisterStartupScript(currentPage, GetType(), "Popup", "excluiMembro();setInterval(function()window.location='" +
+                currentPage.Request.ApplicationPath + "localizaMembro.aspx',3000);", true);
+            }
+            else
+            {
+                Page currentPage = HttpContext.Current.Handler as System.Web.UI.Page;
+                ScriptManager.RegisterStartupScript(currentPage, GetType(), "Popup", "error();", true);
+            }
+
+        }
+
+
 
     }
 }

@@ -16,6 +16,22 @@
                              <div class="col-md-3">
                                  <div class="col-md-12">
                                      <div class="form-group has-feedback">
+                                         <label class="control-label" for="nome">Id:</label>
+                                         <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="fa fa-sign-in"></i>
+                                            </span>
+                                             <asp:TextBox Enabled="false"  ID="txtId" required="" CssClass="form-control" runat="server" style="width:3000px;" placeHolder=""></asp:TextBox>
+
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-3">
+                                 <div class="col-md-12">
+                                     <div class="form-group has-feedback">
                                          <label class="control-label" for="nome">Nome:</label>
                                          <div class="input-group">
                                              <span class="input-group-addon">
@@ -205,9 +221,19 @@
 
                         <div class="form-group col-md-3"></div>
                             <div class="form-group col-md-6 text-right">
-                                <hr />
+                               <hr />
                                 <asp:LinkButton OnClick="btnCadastrar_Click" ID="btnCadastrar" CssClass="btn btn-default disable" Width="200px" Height="40px" runat="server">Cadastrar</asp:LinkButton>
                                    <asp:UpdateProgress  ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="cadastrarUpdatePanel">
+                                             <ProgressTemplate>
+                                                            <img class="text-left" alt="" src="loader.gif" />
+                                             </ProgressTemplate>
+                                    </asp:UpdateProgress>
+                            </div>
+
+                             <div class="form-group col-md-6 text-right">
+                               <hr />
+                                <asp:LinkButton OnClick="btnEdita_Click" ID="btnEdita" CssClass="btn btn-default disable" Width="200px" Height="40px" runat="server">Salvar Alteração</asp:LinkButton>
+                                   <asp:UpdateProgress  ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="cadastrarUpdatePanel">
                                              <ProgressTemplate>
                                                             <img class="text-left" alt="" src="loader.gif" />
                                              </ProgressTemplate>

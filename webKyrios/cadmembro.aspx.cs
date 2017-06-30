@@ -18,7 +18,18 @@ namespace webKyrios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                
+
+          if (Request.QueryString.Count == 0)
+            {
+               btnEdita.Visible = false;
+            }
+            else
+            {
+                btnCadastrar.Visible = false;
+            }
+
+
+                txtId.Text = Request.QueryString["id"];
         }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
@@ -79,7 +90,12 @@ namespace webKyrios
 
         }
 
-        
+        protected void btnEdita_Click(object sender, EventArgs e)
+        {
 
-    }
+
+        }
+
+
+        }
 }

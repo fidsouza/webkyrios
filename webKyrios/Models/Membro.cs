@@ -7,6 +7,7 @@ namespace webKyrios.Models
 {
     public class Membro
     {
+        public int idMembro { get; set; }
         public string nomeMembro { get; set; }
         public string enderMembro { get; set; }
         public Nullable<System.DateTime> dataNascMembro { get; set; }

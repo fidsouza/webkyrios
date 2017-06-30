@@ -33,6 +33,15 @@ function cadastroMOk() {
     });
 }
 
+function excluiMembro() {
+    swal({
+        title: 'Aviso :)',
+        text: 'Excluido com sucesso',
+        type: 'success'
+    });
+}
+
+
 
 
 
