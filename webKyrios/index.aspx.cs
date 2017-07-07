@@ -20,7 +20,7 @@ namespace webKyrios
             if (client == null)
             {
                 client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:9090");
+                client.BaseAddress = new Uri("http://erpkyrios-cc.umbler.net/servico_kyrios/");
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             }
 

@@ -21,7 +21,7 @@ namespace webKyrios.Infra
             if (client == null)
             {
                 client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:9090");
+                client.BaseAddress = new Uri("http://erpkyrios-cc.umbler.net/servico_kyrios/");
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             }
         }
@@ -52,7 +52,7 @@ namespace webKyrios.Infra
 
             try
             {
-                HttpResponseMessage response = client.PostAsync("/api/membros/Postmembros/", new StringContent(JsonConvert.SerializeObject(membro).ToString(),Encoding.UTF8, "application/json")).Result;
+                HttpResponseMessage response = client.PostAsync("api/membros/Postmembros/", new StringContent(JsonConvert.SerializeObject(membro).ToString(),Encoding.UTF8, "application/json")).Result;
                 response.EnsureSuccessStatusCode();
 
 
@@ -86,7 +86,7 @@ namespace webKyrios.Infra
         {
            
           
-                HttpResponseMessage response = client.GetAsync("/api/membros/Getmembros?"+ "nome=" + nome  ).Result;
+                HttpResponseMessage response = client.GetAsync("api/membros/Getmembros?"+ "nome=" + nome  ).Result;
                 response.EnsureSuccessStatusCode();
 
                  if (response.IsSuccessStatusCode) {
@@ -109,7 +109,7 @@ namespace webKyrios.Infra
 
         public void deletaMembro(int id)
         {
-            HttpResponseMessage response = client.DeleteAsync("/api/membros/Deletemembros/" + id).Result;
+            HttpResponseMessage response = client.DeleteAsync("api/membros/Deletemembros/" + id).Result;
             response.EnsureSuccessStatusCode();
 
             if (response.IsSuccessStatusCode)

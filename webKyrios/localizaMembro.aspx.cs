@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Threading.Tasks;
+using System.Web.UI;
 using webKyrios.Infra;
 using webKyrios.Interface;
 using webKyrios.Models;
@@ -42,36 +43,29 @@ namespace webKyrios
             
 
             Task<List<Membro>> retMembro = locMembro.localizaMembro(txtNomeMembro.Text);
-            Membro[] array =  retMembro.Result.ToArray();
 
-            
-
-
-            List<Membro> Membros = new List<Membro>();
-
-            for (int i = 0; i < retMembro.Result.Count; i++)
+            if(retMembro.Result.Count == 0)
             {
-                Membros.Add(array[i]);
-                
+                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "error();", true);
+            }
+            else
+            {
+                Membro[] array = retMembro.Result.ToArray();
+                List<Membro> Membros = new List<Membro>();
+
+                for (int i = 0; i < retMembro.Result.Count; i++)
+                {
+                    Membros.Add(array[i]);
+
+
+                }
+
+                DataTable dt = ConvertToDatatable(Membros);
+
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
 
             }
-
-            DataTable dt = ConvertToDatatable(Membros);
-
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-
-
-
-      
-
-
-
-
-
-
-
-
         }
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
